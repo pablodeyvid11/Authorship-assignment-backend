@@ -3,18 +3,6 @@ package Compressores;
 import java.io.OutputStream;
 import java.io.IOException;
 
-/** Writes to an underlying output stream a bit at a time.  A bit is can be input
- * as a boolean, with <code>true=1</code> and <code>false=0</code>, or
- * as a number, in which case any non-zero input will be converted to
- * <code>1</code>.  If the number of bits written before closing the output
- * does not land on a byte boundary, the remaining fractional byte is
- * filled with <code>0</code> bits.
- *
- * @author <a href="http://www.colloquial.com/carp/">Bob Carpenter</a>
- * @version 1.1
- * @see BitInput
- * @since 1.0
- */
 public final class BitOutput {
 
     /** Construct a  bit output from the specified output stream.
@@ -25,11 +13,14 @@ public final class BitOutput {
 	reset();
     }
 
-    /** Closes underlying output stream after filling to a byte
-     * boundary with <code>0</code> bits.
-     * @throws IOException If there is an I/O exception writing the next byte or closing the underlying output stream.
-     */
-    public void close() throws IOException {
+    /**
+	 * Closes underlying output stream after filling to a byte boundary with
+	 * <code>0</code> bits.
+	 * 
+	 * @throws IOException If there is an I/O exception writing the next byte or
+	 *                     closing the underlying output stream.
+	 */
+	public void close() throws IOException {
 	if (_nextBitIndex < 7)                       // there's something in the buffer
 	    _out.write(_nextByte << _nextBitIndex); // shift to fill last byte
 	_out.close();

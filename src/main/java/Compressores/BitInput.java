@@ -3,9 +3,9 @@ package Compressores;
 import java.io.IOException;
 import java.io.InputStream;
 
-/** Reads input from an underlying input stream a bit at a time.  Bits
- * are returned as booleans, with <code>true=1</code> and
- * <code>false=0</code>.
+/**
+ * Reads input from an underlying input stream a bit at a time. Bits are
+ * returned as booleans, with <code>true=1</code> and <code>false=0</code>.
  *
  * @see Compressores.colloquial.arithcode.BitOutput
  *
