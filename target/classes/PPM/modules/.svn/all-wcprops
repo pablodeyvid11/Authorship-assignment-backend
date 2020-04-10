@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/274/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules
+END
+PPMDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/194/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/PPMDecoder.java
+END
+Context.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/274/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/Context.java
+END
+Symbol.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/274/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/Symbol.java
+END
+AbstractPPMModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/230/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/AbstractPPMModule.java
+END
+LHT.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/102/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/LHT.java
+END
+PPMEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/274/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/PPMEncoder.java
+END
+ContextKMinusOne.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/274/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/modules/ContextKMinusOne.java
+END

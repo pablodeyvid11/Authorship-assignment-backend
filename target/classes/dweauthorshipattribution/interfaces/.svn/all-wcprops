@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/247/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces
+END
+WordClassifierIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/209/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/WordClassifierIF.java
+END
+AuthorIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/211/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/AuthorIF.java
+END
+AuthorshipAllocatorResultIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/221/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/AuthorshipAllocatorResultIF.java
+END
+AuthorshipAllocatorIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/!svn/ver/231/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/AuthorshipAllocatorIF.java
+END
+WordIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/247/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/WordIF.java
+END
+AuthorCompressFileLenghIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/222/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/AuthorCompressFileLenghIF.java
+END
+DoTrainingIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/!svn/ver/224/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/DoTrainingIF.java
+END
+PPMAuthorIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/230/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/interfaces/PPMAuthorIF.java
+END

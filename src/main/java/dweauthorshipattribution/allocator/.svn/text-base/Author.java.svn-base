@@ -1,0 +1,75 @@
+package br.ufpb.di.itidiscipline.dweauthorshipattribution.allocator;
+
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.AuthorIF;
+import java.io.File;
+
+/**
+ * Representa um autor e seu arquivo de treinamento.
+ *
+ * <br><br>
+ * Esse projeto faz parte de uma das atividades da disciplina de Introdução
+ * à Teoria da Informação do Departamento de Informática da Universidade Federal
+ * da Paraíba (UFPB) do período 2010.1 ministrada pelo professor Leonardo Vidal e
+ * consiste na atribuicao de autoria utilizando a frequencia de classificacao das
+ * palavras utilizadas por um determinado autor.
+ * Este e' o projeto final da disciplina.
+ *
+ * @since 26 de junho de 2010
+ * @author Elenilson Vieira - elenilson[at]elenilsonvieira.com
+ * @author Daniel Pires - dpsmetal[at]gmail.com
+ * @author Wolgrand Cardoso - wolgrandcardoso[at]gmail.com
+ * @version 1.0
+ * @see www.di.ufpb.br
+ */
+public class Author implements AuthorIF{
+
+    private String authorName;
+    private File authorFile;
+
+    /**
+     * Construtor da classe.
+     *
+     * @param authorName o nome do autor.
+     * @param authorFile o arquivo de treinamento do autor.
+     */
+    public Author(String authorName, File authorFile) {
+        if(authorName == null || authorName.isEmpty())
+            throw new IllegalArgumentException("Name can't be null!");
+
+        if(authorFile == null || !authorFile.isFile())
+            throw new IllegalArgumentException("File can't be null or not a file!");
+
+        this.authorName = authorName;
+        this.authorFile = authorFile;
+    }
+
+    public File getAuthorFile() {
+        return authorFile;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Author other = (Author) obj;
+        if ((this.authorName == null) ? (other.authorName != null) : !this.authorName.equals(other.authorName)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + (this.authorName != null ? this.authorName.hashCode() : 0);
+        return hash;
+    }
+}

@@ -1,0 +1,5 @@
+Se você é desenvolvedor a algum tempo com certeza já se deparou com a questão da promoção de sênior a gerente. Por algumas razões que iremos analisar as pessoas não só aceitam este fato como esperam por ele.
+
+Não é incomum durante uma entrevista perguntar para o candidato a uma vaga de desenvolvedor onde ele se vê daqui a 5 - 10 anos, e a resposta costuma ser “como gerente”. A razão para isso é simples: dinheiro. Historicamente a pessoa na posição de Gerente ganha mais que a pessoa na posição de desenvolvedor, seja qual for a sua classificação ou maturidade. Mas esse, espante-se, não é o único fator. A chamada da sereia do poder é prazerosa.
+
+As empresas acham que promover a pessoa de desenvolvedor sênior para gerente é uma coisa boa. Não é. E as pessoas na sua extrema visão curta só enxergam essa opção.  Não é segredo que todos queremos ganhar mais, então quando a pessoa diz 

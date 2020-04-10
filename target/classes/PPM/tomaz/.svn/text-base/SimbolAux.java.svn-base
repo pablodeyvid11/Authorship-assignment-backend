@@ -1,0 +1,44 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package br.ufpb.di.itidiscipline.ppm.tomaz;
+
+import java.util.Map.Entry;
+
+/**
+ *
+ * @author Usuário
+ */
+public class SimbolAux {
+    private Contador contador;
+    private Byte simb;
+
+    public void setEntry(Entry<Byte, Contador> entry) {
+        contador = entry.getValue();
+        simb = entry.getKey();
+    }
+    public void setValores(Byte simb, Contador contador) {
+        this.contador = contador;
+        this.simb = simb;
+    }
+
+    public Byte getSimbol() {
+        return simb;
+    }
+    public int getCount() {
+        return contador.getCount();
+    }
+    public int increment() {
+        return contador.increment();
+    }
+    public boolean wasFound() {
+        return contador != null;
+    }
+
+    public Contador getContador() {
+        return contador;
+    }
+    
+}

@@ -1,0 +1,168 @@
+package br.ufpb.di.itidiscipline.dweauthorshipattribution.training;
+
+import br.ufpb.di.itidiscipline.dwe.util.OutputFile;
+import br.ufpb.di.itidiscipline.dwe.util.TextFile;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.allocator.PPMAuthor;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.DoTrainingIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.PPMAuthorIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.WordClassifierIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.WordIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.util.FileUtils;
+import br.ufpb.di.itidiscipline.ppm.modules.PPMDecoder;
+import br.ufpb.di.itidiscipline.ppm.modules.PPMEncoder;
+import java.io.File;
+
+/**
+ * Faz o treinamento de um determinado texto e cria um arquivo binario.
+ *
+ * <br><br>
+ * Esse projeto faz parte de uma das atividades da disciplina de Introdução
+ * à Teoria da Informação do Departamento de Informática da Universidade Federal
+ * da Paraíba (UFPB) do período 2010.1 ministrada pelo professor Leonardo Vidal e
+ * consiste na atribuicao de autoria utilizando a frequencia de classificacao das
+ * palavras utilizadas por um determinado autor.
+ * Este e' o projeto final da disciplina.
+ *
+ * @since 26 de junho de 2010
+ * @author Elenilson Vieira - elenilson[at]elenilsonvieira.com
+ * @author Daniel Pires - dpsmetal[at]gmail.com
+ * @author Wolgrand Cardoso - wolgrandcardoso[at]gmail.com
+ * @version 1.0
+ * @see www.di.ufpb.br
+ */
+public class DoTraining implements DoTrainingIF{
+
+    public static final String INTERMEDIATE_CLASSIFIED_FILE_NAME = "intermediate.classified";
+    public static final String INTERMEDIATE_PPM_FILE_NAME = "intermediate.ppm";
+
+    private TextFile textSource;
+    private String fileName;
+    private File directoryTo;
+    private WordClassifierIF wordClassifier;
+    private String createdFilePath;
+    private String authorName;
+
+    /**
+     * Construtor da classe.
+     * 
+     * @param textSource o arquivo fonte
+     * @param fileName o nome do arquivo a ser criado
+     * @param authorName o nome do autor a ser inserido
+     * @param directoryTo o diretorio onde sera criado o arquivo
+     * @param wordClassifier o classificador de palavras
+     */
+    public DoTraining(TextFile textSource, String fileName, String authorName, File directoryTo,
+            WordClassifierIF wordClassifier) {
+        if(textSource == null)
+            throw new IllegalArgumentException("Source is null!");
+
+        if(fileName == null || fileName.isEmpty())
+            throw new IllegalArgumentException("File name can't be null or empty!");
+
+        if(authorName == null || authorName.isEmpty())
+            throw new IllegalArgumentException("Author name can't be null or empty!");
+
+        if(directoryTo == null || directoryTo.isFile())
+            throw new IllegalArgumentException("Location to write can't be a file!");
+
+        if(wordClassifier == null)
+            throw new IllegalArgumentException("Classifier can't be null!");
+
+        this.textSource = textSource;
+        this.fileName = fileName;
+        this.directoryTo = directoryTo;
+        this.wordClassifier = wordClassifier;
+        this.authorName = authorName;
+
+        this.createdFilePath = formatPath(fileName, directoryTo);
+    }
+
+    public TextFile getTextSource() {
+        return textSource;
+    }
+
+    public File getDirectoryTo() {
+        return directoryTo;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public WordClassifierIF getWordClassifier() {
+        return wordClassifier;
+    }
+
+    public File execute() throws Exception {
+        //Arquivo classidicado
+        File intermediateClassifiedFile = new File(formatPathWithoutExtension(INTERMEDIATE_CLASSIFIED_FILE_NAME, directoryTo));
+
+        //Arquivo que o PPM vai gerar
+        File intermediatePPMFile = new File(formatPathWithoutExtension(INTERMEDIATE_PPM_FILE_NAME, directoryTo));
+        OutputFile outputFile = new OutputFile(intermediateClassifiedFile);
+
+        /*** Tokenizar ***/
+        String[] tokens = textSource.tokenizer();
+        
+        /*** Classifica as palavras ***/
+        for (String token : tokens) {
+            token = token.trim();
+
+            if(!token.isEmpty()){
+                WordIF word = wordClassifier.classificate(token);
+                outputFile.write(word.getWordClassification().getCode());
+            }
+        }
+
+        /*** Fecha o arquivo ***/
+        outputFile.flush();
+        outputFile.close();
+
+        /*** Passa o ppm ***/
+        PPMEncoder pPMEncoder = new PPMEncoder(intermediateClassifiedFile, intermediatePPMFile);
+        pPMEncoder.execute();
+
+        PPMAuthor pPMAuthor = new PPMAuthor(pPMEncoder, authorName);
+
+        /*** Deleta os arquivos intermediarios ***/
+        intermediateClassifiedFile.delete();
+        intermediatePPMFile.delete();
+
+        return FileUtils.writeObject(pPMAuthor, formatPath(fileName, directoryTo));
+    }
+
+    /**
+     * Forma o caminho do arquivo a ser criado com extensao.
+     *
+     * @param fileName o nome do arquivo
+     * @param directoryTo o diretorio onde sera criado
+     *
+     * @return o caminho formatado
+     */
+    private String formatPath(String fileName, File directoryTo) {
+        String directoryPath = directoryTo.getAbsolutePath();
+        
+        return directoryPath.length() < 1 ? String.format("%s.%s", fileName, EXTENSION) :
+            String.format("%s/%s.%s", directoryPath, fileName, EXTENSION);
+    }
+
+    /**
+     * Forma o caminho do arquivo a ser criado sem extensao.
+     *
+     * @param fileName o nome do arquivo
+     * @param directoryTo o diretorio onde sera criado
+     *
+     * @return o caminho formatado
+     */
+    private String formatPathWithoutExtension(String fileName, File directoryTo) {
+        String directoryPath = directoryTo.getAbsolutePath();
+
+        return directoryPath.length() < 1 ? fileName :
+            String.format("%s/%s", directoryPath, fileName);
+    }
+
+    public String getCreatedFilePath() {
+        return createdFilePath;
+    }
+
+}

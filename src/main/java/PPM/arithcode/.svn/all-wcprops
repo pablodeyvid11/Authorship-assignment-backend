@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/274/trunk/PPM/src/com/colloquial/arithcode
+END
+ArithCodeOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ArithCodeOutputStream.java
+END
+BitOutput.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/274/trunk/PPM/src/com/colloquial/arithcode/BitOutput.java
+END
+UniformModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/UniformModel.java
+END
+AdaptiveUnigramModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/AdaptiveUnigramModel.java
+END
+PPMNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/PPMNode.java
+END
+ExcludingAdaptiveUnigramModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ExcludingAdaptiveUnigramModel.java
+END
+Converter.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/Converter.java
+END
+ArithEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/274/trunk/PPM/src/com/colloquial/arithcode/ArithEncoder.java
+END
+PPMCompress.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/PPMCompress.java
+END
+PPMModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/PPMModel.java
+END
+ByteSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ByteSet.java
+END
+Test.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/Test.java
+END
+PPMDecompress.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/PPMDecompress.java
+END
+ArithCodeModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ArithCodeModel.java
+END
+ArithCoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/274/trunk/PPM/src/com/colloquial/arithcode/ArithCoder.java
+END
+TestStatistics.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/TestStatistics.java
+END
+TestSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/TestSet.java
+END
+TokenStreamEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/TokenStreamEncoder.java
+END
+ArithDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ArithDecoder.java
+END
+ByteBuffer.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ByteBuffer.java
+END
+ArithCodeInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/ArithCodeInputStream.java
+END
+BitInput.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/85/trunk/PPM/src/com/colloquial/arithcode/BitInput.java
+END

@@ -1,0 +1,129 @@
+package br.ufpb.di.itidiscipline.dweauthorshipattribution.tests;
+
+import br.ufpb.di.itidiscipline.dwe.util.Pool;
+import br.ufpb.di.itidiscipline.dwe.util.TextFile;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.WordClassifierIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.WordIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.persistence.dao.WordDAO;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.WordIF.WordClassification;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.lexicon.Word;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.lexicon.WordClassifier;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.persistence.DWEPersistenceUtil;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+
+/**
+ * Classe de testes do projeto de atribuicao de autoria.
+ *
+ * <br><br>
+ * Esse projeto faz parte de uma das atividades da disciplina de Introdução
+ * à Teoria da Informação do Departamento de Informática da Universidade Federal
+ * da Paraíba (UFPB) do período 2010.1 ministrada pelo professor Leonardo Vidal e
+ * consiste na atribuicao de autoria utilizando a frequencia de classificacao das
+ * palavras utilizadas por um determinado autor.
+ * Este e' o projeto final da disciplina
+ *
+ * @since 26 de junho de 2010
+ * @author Elenilson Vieira - elenilson[at]elenilsonvieira.com
+ * @author Daniel Pires - dpsmetal[at]gmail.com
+ * @author Wolgrand Cardoso - wolgrandcardoso[at]gmail.com
+ * @version 1.0
+ * @see www.di.ufpb.br
+ */
+public class TestImpl {
+
+   
+    /**
+     * Main de teste do projeto.
+     * 
+     * @param args argumentos da linha de comando
+     */
+    public static void main(String[] args) throws IOException, IllegalAccessException {
+<<<<<<< .mine
+        
+        String s = "C:/Users/wolgrand/Documents/NetBeansProjects/iti/base/" + JOptionPane.showInputDialog("Digite o nome do arquivo:");
+        
+        populateDatabase(s);
+=======
+        System.out.println(">> main");
+        populateDatabase();
+>>>>>>> .r273
+    }
+
+    public static void saveTest(){
+        Test t = new Test("elenilson");
+        Session session = (Session) DWEPersistenceUtil.entitityManager.getDelegate();
+        org.hibernate.Transaction transaction = session.beginTransaction();
+
+        transaction.begin();
+        session.merge(t);
+        transaction.commit();
+    }
+
+    public static void getWord(){
+        WordDAO wordDAO = new WordDAO();
+        WordIF word = wordDAO.getWord("elenilsodvfvfn");
+        System.out.println(">> " + word);
+    }
+
+    public static void saveWord(){
+        Word word = new Word("elenilsón", WordClassification.NOUN);
+        WordDAO wordDAO = new WordDAO();
+        wordDAO.save(word);
+    }
+
+    public static void tokenizer() throws IOException, IllegalAccessException{
+        TextFile t = new TextFile("teste.txt");
+        t.setContent("eleniláon,vieira,daniel,wolgrand.... tiago machado");
+
+        String[] tokens = t.tokenizer();
+        for(int i = 0;i < tokens.length ;i++ ){
+            System.out.println(">> " + tokens[i]);
+        }
+    }
+
+    public static void path(){
+        String local = System.getProperty("user.dir");
+        System.out.println(local);
+    }
+
+<<<<<<< .mine
+    public static void populateDatabase(String s) throws IOException{
+=======
+    /**
+     * ATENCAO: esse teste so funciona se tiver o syncronized em todos os metodos do DAO.
+     */
+    public static void populateDatabase() throws IOException{
+>>>>>>> .r273
+        WordClassifierIF wordClassifier = new WordClassifier();
+        TextFile textFile = new TextFile(s);
+
+        String[] tokens = textFile.tokenizer();
+
+        System.out.println(">> iniciando for com size " + tokens.length);
+        for (String token : tokens) {
+
+            Runnable run = new Run(wordClassifier, token);
+            Pool.execute(run);
+        }
+        System.out.println(">> terminando for");
+    }
+
+
+    static class Run implements Runnable{
+
+        private WordClassifierIF wordClassifier;
+        private String token;
+
+        public Run(WordClassifierIF wordClassifier, String token) {
+            this.wordClassifier = wordClassifier;
+            this.token = token;
+        }
+
+        public void run() {
+            wordClassifier.classificate(token);
+        }
+
+    }
+}

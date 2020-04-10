@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/275/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/interfaces
+END
+PPMModuleIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/275/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/interfaces/PPMModuleIF.java
+END
+ContextIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/275/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/interfaces/ContextIF.java
+END
+SymbolIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/210/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/interfaces/SymbolIF.java
+END
+LHTIF.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/210/trunk/PPM/src/br/ufpb/di/itidiscipline/ppm/interfaces/LHTIF.java
+END

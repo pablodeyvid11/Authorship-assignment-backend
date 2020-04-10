@@ -1,0 +1,55 @@
+package br.ufpb.di.itidiscipline.dwe.huffman.interfaces;
+
+/**
+ * Classe da arvore do compressor Huffman.
+ *
+ * <br><br>
+ * Esse projeto faz parte de uma das atividades da disciplina de Introdução
+ * à Teoria da Informação do Departamento de Informática da Universidade Federal
+ * da Paraíba (UFPB) do período 2010.1 ministrada pelo professor Leonardo Vidal.
+ *
+ * @since 11 de maio de 2010
+ * @author Elenilson Vieira - elenilson[at]elenilsonvieira.com
+ * @author Daniel Pires - dpsmetal[at]gmail.com
+ * @author Wolgrand Cardoso - wolgrandcardoso[at]gmail.com
+ * @version 1.0
+ * @see www.di.ufpb.br
+ */
+public interface HuffmanTreeIF {
+
+    /**
+     * Retorna o codigo de um simbolo
+     *
+     * @param symbol o simbolo
+     *
+     * @return o codigo do simbolo se ele existir na arvore ou null caso contrario
+     */
+    public boolean[] getSymbolCode(byte symbol);
+
+    /**
+     * Retorna o codigo atual do escape
+     *
+     * @return o codigo atual do escape na arvore ou null caso ele nao seja mais utilizado
+     */
+    public boolean[] getEscapeCode();
+
+    /**
+     * Adiciona uma ocorrencia do simbolo passado como argumento. Se o simbolo
+     * nao existir na arvore, adiciona-o e adiciona uma ocorrencia no escape.
+     *
+     * @param symbol o simbolo a ser adicionado a ocorrencia
+     * 
+     * @return o numero de ocorrencias apos adiciona a nova ocorrencia
+     */
+    public int addOcurrency(byte symbol);
+
+    /**
+     * Retorna o simbolo dado o codigo em bytes dele na arvore de huffman
+     *
+     * @param code o codigo do simbolo na arvore de huffman
+     *
+     * @return o simbolo que o codigo representa ou null caso o codigo nao existe o for escape
+     */
+    public Byte getOriginalSymbol(boolean[] code);
+
+}

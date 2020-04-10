@@ -1,0 +1,109 @@
+package br.ufpb.di.itidiscipline.dweauthorshipattribution.persistence.dao;
+
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.persistence.DWEPersistenceUtil;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.interfaces.WordIF;
+import br.ufpb.di.itidiscipline.dweauthorshipattribution.lexicon.Word;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+/**
+ * Classificador de palavras.
+ *
+ * <br><br>
+ * Esse projeto faz parte de uma das atividades da disciplina de Introdução
+ * à Teoria da Informação do Departamento de Informática da Universidade Federal
+ * da Paraíba (UFPB) do período 2010.1 ministrada pelo professor Leonardo Vidal e
+ * consiste na atribuicao de autoria utilizando a frequencia de classificacao das
+ * palavras utilizadas por um determinado autor.
+ * Este e' o projeto final da disciplina.
+ *
+ * @since 26 de junho de 2010
+ * @author Elenilson Vieira - elenilson[at]elenilsonvieira.com
+ * @author Daniel Pires - dpsmetal[at]gmail.com
+ * @author Wolgrand Cardoso - wolgrandcardoso[at]gmail.com
+ * @version 1.0
+ * @see www.di.ufpb.br
+ */
+public class WordDAO {
+
+    private Session session;
+
+    /**
+     * Construtor da classe.
+     */
+    public WordDAO() {
+        this.session = (Session) DWEPersistenceUtil.entitityManager.getDelegate();
+    }
+
+    /**
+     * Retorna uma palavra do banco
+     *
+     * @param word a palavra a ser procurada
+     *
+     * @return a palavra do banco ou null
+     */
+    public WordIF getWord(String word){
+        List list = getWords(word);
+        return (WordIF) (list != null && list.size() > 0 ? list.get(0) : null);
+    }
+
+    /**
+     * Retorna uma palavra do banco
+     *
+     * @param word a palavra a ser procurada
+     *
+     * @return uma lista com as palavras encontradas
+     */
+    public List<WordIF> getWords(String word){
+        return session.createCriteria(Word.class).add(Restrictions.eq("word", word)).list();
+    }
+
+    /**
+     * Salva uma palavra no banco sem verificar se ela ja existe
+     *
+     * @param word a palavra a ser salva
+     */
+    public void save(WordIF word){
+        Transaction transaction = session.beginTransaction();
+        session.persist(word);
+        transaction.commit();
+    }
+
+    /**
+     * Salva uma palavra no banco se ela ja nao existe
+     *
+     * @param word a palavra a ser salva
+     */
+    public void merge(WordIF word){
+        if(!contains(word.getWord())){
+            Transaction transaction = session.beginTransaction();
+            session.persist(word);
+            transaction.commit();
+        }
+    }
+
+    /**
+     * Deleta uma palavra do banco
+     * 
+     * @param word a palavra a ser deletada
+     */
+    public void delete(WordIF word){
+        Transaction transaction = session.beginTransaction();
+        session.delete(word);
+        transaction.commit();
+    }
+
+    /**
+     * Verifica se contem a palavra.
+     *
+     * @param word a palavra a ser procurada
+     *
+     * @return verdadeiro se contiver e falso caso contrario
+     */
+    public boolean contains(String word){
+        return getWord(word) != null;
+    }
+
+}

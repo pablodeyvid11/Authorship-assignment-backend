@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/267/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/lexicon
+END
+DicionarioException.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/250/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/lexicon/DicionarioException.java
+END
+WordClassifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/267/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/lexicon/WordClassifier.java
+END
+DicionarioReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/!svn/ver/267/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/lexicon/DicionarioReader.java
+END
+Word.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/243/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/lexicon/Word.java
+END
+DicionarioExceptionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/!svn/ver/250/trunk/DWEAuthorshipAttribution/src/br/ufpb/di/itidiscipline/dweauthorshipattribution/lexicon/DicionarioExceptionHandler.java
+END
