@@ -27,7 +27,7 @@ public abstract class AbstractPPMModule implements PPMModuleIF{
     /**
      * Numero de contextos default.
      */
-    public static int DEFAULT_NUMBER_OF_CONTEXTS = 3;
+    public static int DEFAULT_NUMBER_OF_CONTEXTS = 4;
 
     /**
      * Essa variavel diz se e' para utilizar compressao continua chamando um metodo do
