@@ -146,7 +146,7 @@ public class WordClassifier implements WordClassifierIF{
             dao.save(wrd);//salva no banco
         }
         else{
-           System.out.println("Palavra : "+wrd.getWord()+ " j√° consta no banco de dados como :"+wrd.getWordClassification().toString());
+//           System.out.println("Palavra : "+wrd.getWord()+ " j· consta no banco de dados como :"+wrd.getWordClassification().toString());
         }
 
         return wrd;
