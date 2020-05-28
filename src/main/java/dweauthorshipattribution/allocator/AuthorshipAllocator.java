@@ -106,7 +106,7 @@ public class AuthorshipAllocator implements AuthorshipAllocatorIF {
 		/*** Cria o arquivo classificado ***/
 		String tokens[] = sourceTextFile.tokenizer();
 		System.out.println(locationToWrite);
-		File classifiedFile = new File(FileUtils.formatPath(CLASSIFIED_FILE_NAME, "C:\\Users\\Pablo Paiva\\Documents"));
+		File classifiedFile = new File(FileUtils.formatPath(CLASSIFIED_FILE_NAME, locationToWrite));
 
 		System.out.println(classifiedFile.getPath());
 		OutputFile classifiedFileByte = new OutputFile(classifiedFile);
