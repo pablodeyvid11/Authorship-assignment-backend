@@ -58,7 +58,7 @@ public class Decoder {
 
         }
 
-        System.out.println("aux : " + index);
+        //System.out.println("aux : " + index);
         return index;
         //OK!
     }
@@ -125,8 +125,8 @@ public class Decoder {
             pW = cW;
             cW = leCodigo(stringCodificada, 3 * i);
             tamanhoDicionario = dicionario.size();
-            System.out.println("cW -> "+cW);
-            System.out.println("TAMANHO DICIONARIO : "+dicionario.size());
+//            System.out.println("cW -> "+cW);
+//            System.out.println("TAMANHO DICIONARIO : "+dicionario.size());
 
             ////var bool , if se cW for maior ou igual ao tam do dicionario
 
@@ -136,22 +136,22 @@ public class Decoder {
                 C = P.charAt(0);
                 stringDecodificada += (P + C);
                 dicionario.add(P+C);
-                System.out.println("ADICIONANDO STRING : " + P + C);
+                //System.out.println("ADICIONANDO STRING : " + P + C);
             } else {
                 aux = intParaString(cW);
-                System.out.println("CARACTERE > " + aux);
+                //System.out.println("CARACTERE > " + aux);
                 if (estaNoDicionario(aux)) {
                     stringDecodificada += aux;
                     aux2 = intParaString(pW);
                     P = aux2;
                     C = aux.charAt(0);
                     dicionario.add(P + C);
-                    System.out.println("ADICIONANDO STRING " + aux);
+                    //System.out.println("ADICIONANDO STRING " + aux);
                 } else {
                     P = intParaString(pW);
                     C = P.charAt(0);
                     stringDecodificada += (P + C);
-                    System.out.println("ADICIONANDO STRING : " + P + C);
+                    //System.out.println("ADICIONANDO STRING : " + P + C);
                 }
             }
 
@@ -220,22 +220,22 @@ public class Decoder {
                 C = P.charAt(0);
                 stringDecodificada += (P + C);
                 //mensagemDecodificada.add
-                System.out.println("ADICIONANDO STRING : " + P + C);
+                //System.out.println("ADICIONANDO STRING : " + P + C);
             } else {
                 aux = byteParaString(cW);
-                System.out.println("CARACTERE > " + aux);
+                //System.out.println("CARACTERE > " + aux);
                 if (estaNoDicionario(aux)) {
                     stringDecodificada += aux;
                     aux2 = byteParaString(pW);
                     P = aux2;
                     C = aux.charAt(0);
                     dicionario.add(P + C);
-                    System.out.println("ADICIONANDO STRING " + aux);
+                    //System.out.println("ADICIONANDO STRING " + aux);
                 } else {
                     P = byteParaString(pW);
                     C = P.charAt(0);
                     stringDecodificada += (P + C);
-                    System.out.println("ADICIONANDO STRING : " + P + C);
+                    //System.out.println("ADICIONANDO STRING : " + P + C);
                 }
             }
 

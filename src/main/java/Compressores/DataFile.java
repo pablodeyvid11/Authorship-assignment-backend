@@ -144,7 +144,7 @@ public class DataFile {
 
 		openInputFlow();
 		byte b = in.readByte();
-		System.out.println("\nByte lido " + b);
+		//System.out.println("\nByte lido " + b);
 		return b;
 	}
 
@@ -165,7 +165,7 @@ public class DataFile {
 			bits[i] = bitInput.readBit();
 
 		byte b = NumberUtils.toByte(bits);
-		System.out.println("\nByte lido atraves de bits " + b);
+		//System.out.println("\nByte lido atraves de bits " + b);
 		return b;
 	}
 
@@ -180,7 +180,7 @@ public class DataFile {
 	public int read(byte b[]) throws FileNotFoundException, IOException {
 		openInputFlow();
 
-		System.out.println("Tamanho de b " + b.length);
+		//System.out.println("Tamanho de b " + b.length);
 		int i = 0;
 
 		if (alreadyReadBit) {
@@ -205,7 +205,7 @@ public class DataFile {
 	 */
 	public void write(byte b) throws FileNotFoundException, IOException {
 		openOutputFlow();
-		System.out.println("\nEscrevendo byte " + b);
+		//System.out.println("\nEscrevendo byte " + b);
 
 		if (alreadyWriteBit)
 			writeThroughBits(b);
@@ -231,7 +231,7 @@ public class DataFile {
 	 */
 	public void writeThroughBits(byte b) throws FileNotFoundException, IOException {
 		openOutputFlow();
-		System.out.println("Escrevendo byte atraves de bits" + b);
+		//System.out.println("Escrevendo byte atraves de bits" + b);
 
 		boolean[] bits = NumberUtils.toBits(b);
 		writeBit(bits);
@@ -407,7 +407,7 @@ public class DataFile {
 	 */
 	public void writeBit(boolean bit) throws FileNotFoundException, IOException {
 		openOutputFlow();
-		System.out.println("\nEscrevendo bit " + bit);
+		//System.out.println("\nEscrevendo bit " + bit);
 		bitOutput.writeBit(bit);
 	}
 
@@ -418,13 +418,13 @@ public class DataFile {
 	 */
 	public void writeBit(boolean[] bits) throws FileNotFoundException, IOException {
 		openOutputFlow();
-		System.out.print("\nEscrevendo bitS ");
+		//System.out.print("\nEscrevendo bitS ");
 
 		for (boolean b : bits) {
 			System.out.print(b + "");
 		}
 
-		System.out.println("");
+		//System.out.println("");
 
 		for (boolean bit : bits)
 			bitOutput.writeBit(bit);
@@ -443,7 +443,7 @@ public class DataFile {
 
 		alreadyReadBit = true;
 		boolean bit = bitInput.readBit();
-		System.out.println("\nBit lido " + bit);
+		//System.out.println("\nBit lido " + bit);
 
 		return bit;
 	}

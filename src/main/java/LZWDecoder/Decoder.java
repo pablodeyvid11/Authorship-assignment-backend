@@ -57,7 +57,7 @@ public class Decoder {
 
         }
 
-        System.out.println("aux : " + index);
+        //System.out.println("aux : " + index);
         return index;
         //OK!
     }
@@ -115,7 +115,7 @@ public class Decoder {
             cW = leCodigo(stringCodificada, 3 * i);
 
             aux = intParaString(cW);
-            System.out.println("CARACTERE > " + aux);
+            //System.out.println("CARACTERE > " + aux);
 
 
             //contador = i+3;
@@ -126,12 +126,12 @@ public class Decoder {
                 P = aux2;
                 C = aux.charAt(0);
                 dicionario.add(P + C);
-                System.out.println("ADICIONANDO STRING " + aux);
+                //System.out.println("ADICIONANDO STRING " + aux);
             } else {
                 P = intParaString(pW);
                 C = P.charAt(0);
                 stringDecodificada += (P + C);
-                System.out.println("ADICIONANDO STRING : " + P + C);
+                //System.out.println("ADICIONANDO STRING : " + P + C);
             }
         }
 

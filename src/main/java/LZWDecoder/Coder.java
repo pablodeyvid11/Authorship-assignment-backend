@@ -35,7 +35,7 @@ public class Coder {
     private ArrayList<Integer> listaCodificada = new ArrayList<Integer>();
 
     private boolean estaNoDicionario(String x) {
-        System.out.println("\\");
+        //System.out.println("\\");
         for (int i = 0; i < dicionario.size(); i++) {
             //System.out.println("X > "+x+" String "+i+ dicionario.get(i));
             if (dicionario.get(i).equals(x)) {
@@ -99,7 +99,7 @@ public class Coder {
         //filee = arquivo;
         nomeArquivoSaida = arquivo;
         //nomeArquivoSaida = arquivo.getName();
-        System.out.println(nomeArquivoSaida);
+        //System.out.println(nomeArquivoSaida);
         for (int i = 0; i < 256; i++) {
             dicionario.add("" + (char) i);
 
@@ -116,7 +116,7 @@ public class Coder {
         }
         FileInputStream bos = new FileInputStream("arquivo.txt");
         DataInputStream dos = new DataInputStream(bos);
-        System.out.println("********************"+(int)dos.readChar());
+        //System.out.println("********************"+(int)dos.readChar());
         //bufferLeitura= new BufferedReader(new FileReader(arquivoCodificado));
 
     }
@@ -190,7 +190,7 @@ public class Coder {
                 dicionario.add(principal + aux);
 
 
-                System.out.println("PRINCIPAL " + (dicionario.size() - 1) + " : " + principal + aux);
+                //System.out.println("PRINCIPAL " + (dicionario.size() - 1) + " : " + principal + aux);
                 principal = "" + aux;
             }
 
