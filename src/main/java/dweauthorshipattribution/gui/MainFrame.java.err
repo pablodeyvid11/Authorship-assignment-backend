@@ -200,11 +200,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         getFileCla.setText("Get file");
-        getFileCla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getFileClaActionPerformed(evt);
-            }
-        });
 
         jMenuFile.setText("File");
 
@@ -416,10 +411,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         t.start();
     }//GEN-LAST:event_jButtonExecuteActionPerformed
-
-    private void getFileClaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getFileClaActionPerformed
-        System.out.println("Deu certo");
-    }//GEN-LAST:event_getFileClaActionPerformed
 
     public void setResult(AuthorshipAllocatorResultIF result){
         Arrays.sort(result.getTestedAuthors(), AuthorCompressFileLenghIF.COMPARATOR);
