@@ -1,5 +1,6 @@
 package dweauthorshipattribution.gui;
 
+import java.awt.Component;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -389,7 +390,7 @@ public class MainFrame extends javax.swing.JFrame {
 		final MainFrame mainFrame = this;
 
 		System.out.println(selectedTextFile);
-
+		
 		Thread t = new Thread() {
 
 			public void run() {
@@ -412,6 +413,7 @@ public class MainFrame extends javax.swing.JFrame {
 				}
 
 				dialogComicSplash.setVisible(false);
+				JOptionPane.showMessageDialog(mainFrame, "Autoria atibuída!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 			}
 		};
 
@@ -424,7 +426,7 @@ public class MainFrame extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(this, "Select a text file!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
+		Component _this = this;
 		Thread t = new Thread() {
 
 			public void run() {
@@ -490,6 +492,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 				dialogComicSplash.setVisible(false);
 				System.out.println("%nDeu certo");
+				JOptionPane.showMessageDialog(_this, "Arquivo com as classificações gramaticais criado!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 			}
 		};
 		t.start();
