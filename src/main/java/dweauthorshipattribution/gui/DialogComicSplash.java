@@ -30,7 +30,18 @@ public class DialogComicSplash extends javax.swing.JDialog {
     public static final int NUMBER_OF_COMIC_IMAGES = 20;
     public static final String COMIC_IMAGES_PATH = "/dweauthorshipattribution/images/comic/";
     public static final Random RANDOM = new Random();
+    private String operacaoAtual = "";
 
+   
+    public String getOperacaoAtual(){
+        return operacaoAtual;
+    }
+    public void setOperacaoAtual(String operacaoAtual, String vez){
+        this.operacaoAtual = operacaoAtual;
+        Vez.setText(vez);
+        operacaoAtualLabel.setText(operacaoAtual);
+    }
+    
     /** Creates new form DialogComic */
     public DialogComicSplash(java.awt.Frame parent) {
         super(parent, true);
@@ -74,22 +85,35 @@ public class DialogComicSplash extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabelImages = new javax.swing.JLabel();
+        operacaoAtualLabel = new javax.swing.JLabel();
+        Vez = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Comic");
         setResizable(false);
 
         jLabelImages.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dweauthorshipattribution/images/comic/comic_10.jpg"))); // NOI18N
+        jLabelImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/comic_10.jpg"))); // NOI18N
         jLabelImages.setBorder(javax.swing.BorderFactory.createTitledBorder("While you wait..."));
+
+        operacaoAtualLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        operacaoAtualLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        Vez.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Vez.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelImages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelImages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Vez, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(operacaoAtualLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -97,7 +121,11 @@ public class DialogComicSplash extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelImages, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(operacaoAtualLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Vez, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -121,7 +149,9 @@ public class DialogComicSplash extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Vez;
     private javax.swing.JLabel jLabelImages;
+    private javax.swing.JLabel operacaoAtualLabel;
     // End of variables declaration//GEN-END:variables
 
 }

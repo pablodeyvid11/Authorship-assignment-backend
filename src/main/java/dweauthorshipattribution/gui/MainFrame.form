@@ -15,7 +15,7 @@
                   <KeyStroke key="Ctrl+O"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/ufpb/di/itidiscipline/dweauthorshipattribution/images/toggle16x16.png"/>
+                  <Image iconType="3" name="/dweauthorshipattribution/images/toggle16x16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Open"/>
               </Properties>
@@ -29,7 +29,7 @@
                   <KeyStroke key="ESCAPE"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/ufpb/di/itidiscipline/dweauthorshipattribution/images/del16x16.png"/>
+                  <Image iconType="3" name="/dweauthorshipattribution/images/del16x16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
@@ -50,7 +50,7 @@
                   <KeyStroke key="Ctrl+T"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/ufpb/di/itidiscipline/dweauthorshipattribution/images/compilerSucess16x16.png"/>
+                  <Image iconType="3" name="/dweauthorshipattribution/images/compilerSucess16x16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Author"/>
               </Properties>
@@ -64,7 +64,7 @@
                   <KeyStroke key="Ctrl+L"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/ufpb/di/itidiscipline/dweauthorshipattribution/images/help16x16.png"/>
+                  <Image iconType="3" name="/dweauthorshipattribution/images/help16x16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Load Authors"/>
               </Properties>
@@ -78,7 +78,7 @@
                   <KeyStroke key="Ctrl+V"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/ufpb/di/itidiscipline/dweauthorshipattribution/images/compilerError16x16.png"/>
+                  <Image iconType="3" name="/dweauthorshipattribution/images/compilerError16x16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Loaded Authors"/>
               </Properties>
@@ -99,7 +99,7 @@
                   <KeyStroke key="F1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/ufpb/di/itidiscipline/dweauthorshipattribution/images/question16x16.gif"/>
+                  <Image iconType="3" name="/dweauthorshipattribution/images/question16x16.gif"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Authors"/>
               </Properties>

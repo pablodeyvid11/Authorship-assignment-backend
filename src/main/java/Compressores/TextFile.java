@@ -27,6 +27,7 @@ public class TextFile {
     private boolean readOnly;
     private int atualPosition = -1;
     private final File file;
+    private String name;
 
     /**
      * Construtor da classe com dois argumentos. Se o caminho nao existir,
@@ -39,6 +40,7 @@ public class TextFile {
         if(name == null)
             throw new IllegalArgumentException("Name can't be null!");
         
+        this.name = name;
         this.readOnly = readOnly;
         this.file = new File(name);
 
@@ -68,7 +70,7 @@ public class TextFile {
     public TextFile(File file) throws IOException{
         if(file == null)
             throw new IllegalArgumentException("File can't be null!");
-
+        this.name = file.getName();
         this.file = file;
     }
 
@@ -83,7 +85,8 @@ public class TextFile {
         this.charArray = text;
         readOnly = true;
     }
-
+    
+    
     /**
      * Construtor da classe.
      *
@@ -92,6 +95,7 @@ public class TextFile {
      */
     public TextFile(File file, boolean readOnly) throws IOException{
         this(file.toString(), readOnly);
+        this.name = name;
     }
     
     /**
@@ -101,6 +105,10 @@ public class TextFile {
      */
     public String getPath() {
         return file.getAbsolutePath();
+    }
+    
+    public String getName() {
+        return name;
     }
     
     
