@@ -1,6 +1,7 @@
 package dweauthorshipattribution.gui;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
@@ -152,11 +153,25 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
             }
 
             File locationToWrite[] = new File[selectedTextFilesAT.length];
+            
+            File f = new File(System.getProperty("user.dir") + "\\trainingPMMfiles\\base.pin");
+    		if (!f.exists()) {
+    			if (f.getParentFile() != null) {
+    				if (!f.getParentFile().exists()) { // pega tudo que tem antes do arquivo
+    					f.getParentFile().mkdirs();
+    				}
+    			}
+    			try {
+    				f.createNewFile();
+    			} catch (IOException e) {
+    				e.printStackTrace();
+    			}
+    		}
 
             for (int i = 0; i < selectedTextFilesAT.length; i++) {
-                locationToWrite[i] = new File(System.getProperty("user.dir") + "\\TRAINING PPM FILES");
+                locationToWrite[i] = new File(System.getProperty("user.dir") + "\\trainingPMMfiles");
             }
-
+            
             DoTrainingIF doTraining[]
                     = new DoTrainingIF[selectedTextFilesAT.length];
 
