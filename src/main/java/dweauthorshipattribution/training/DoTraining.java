@@ -95,6 +95,7 @@ public class DoTraining implements DoTrainingIF{
     }
 
     public File execute() throws Exception {
+    	
         //Arquivo classidicado
         File intermediateClassifiedFile = new File(formatPathWithoutExtension(INTERMEDIATE_CLASSIFIED_FILE_NAME, directoryTo));
 
