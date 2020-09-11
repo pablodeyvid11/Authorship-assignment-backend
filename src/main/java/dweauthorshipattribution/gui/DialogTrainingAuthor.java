@@ -201,8 +201,9 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
 
 				public void run() {
 					long before = System.currentTimeMillis();
+					String logTreino = "";
 					for (int i = 0; i < selectedTextFilesAT.size(); i++) {
-						final TextFile fileSe = selectedTextFilesAT.get(0);
+						final TextFile fileSe = selectedTextFilesAT.get(i);
 						final String vez = (i + 1) + "/" + selectedTextFilesAT.size();
 						try {
 							Thread tt = new Thread() {
@@ -223,17 +224,21 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
 							dialogComicSplash.setVisible(false);
 
 							setVisible(false);
+							logTreino += fileSe.getName() + ": Sucess.\n";
 						} catch (Exception ex) {
 							ex.printStackTrace();
-							dialogComicSplash.setVisible(false);
-							JOptionPane.showMessageDialog(null, "Error training author! Verify the training file.",
-									"Error", JOptionPane.ERROR_MESSAGE);
+							try {
+								logTreino += fileSe.getName() + ": Error.\n";
+							} catch(Exception ex2){
+								logTreino += "ABSOLUTE ERROR%n";
+							}
 						}
 					}
 					long after = System.currentTimeMillis();
 					String time = TimeUtils.convertInterval(before, after);
-					String message = String.format("Authors training with sucess in %s!", time);
+					String message = String.format("Authors trained in %s!\n\n%s", time, logTreino);
 					JOptionPane.showMessageDialog(null, message, "Sucess", JOptionPane.INFORMATION_MESSAGE);
+					selectedTextFilesAT.clear();
 				}
 			};
 
