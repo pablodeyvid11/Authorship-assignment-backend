@@ -336,9 +336,9 @@ public class TextFile {
      */
     public String[] tokenizer() throws FileNotFoundException{
         String content = getContent();
-
+        
         for (String ponctuation : PONCTUATION) 
-            content = content.replace(ponctuation, String.format(" %s ", ponctuation));
+            content = content.replace(ponctuation, String.format(" %s %d", ponctuation));
 
         return content.split(" ");
     }
