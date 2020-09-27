@@ -338,7 +338,7 @@ public class TextFile {
         String content = getContent();
         
         for (String ponctuation : PONCTUATION) 
-            content = content.replace(ponctuation, String.format(" %s %d", ponctuation));
+            content = content.replace(ponctuation, String.format(" %s ", ponctuation));
 
         return content.split(" ");
     }

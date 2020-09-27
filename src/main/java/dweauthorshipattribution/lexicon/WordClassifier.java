@@ -96,17 +96,17 @@ public class WordClassifier implements WordClassifierIF{
 	}
 
     public WordIF classificate(String word) {
-        if(word.equals(".")||word.equals("!")||word.equals("?")||word.equals("...")){
-            return new Word(word, WordIF.WordClassification.FINAL_PONCTUATION);
-//            wrd.setWordClassification(WordIF.WordClassification.FINAL_PONCTUATION);
-
-            //dao.save(wrd);//salva no banco a pontuacao final
-        }
-        else if(word.equals(",")||word.equals(";")||word.equals("-")||word.equals(":")||word.equals("(")||word.equals(")")||word.equals("\"")||word.equals("\'")){
-            return new Word(word, WordIF.WordClassification.INTERMEDIATE_PONTUATION);
-//            wrd.setWordClassification(WordIF.WordClassification.INTERMEDIATE_PONTUATION);
-            //dao.save(wrd);//salva no banco
-        }
+//        if(word.equals(".")||word.equals("!")||word.equals("?")||word.equals("...")){
+//            return new Word(word, WordIF.WordClassification.FINAL_PONCTUATION);
+////            wrd.setWordClassification(WordIF.WordClassification.FINAL_PONCTUATION);
+//
+//            //dao.save(wrd);//salva no banco a pontuacao final
+//        }
+//        else if(word.equals(",")||word.equals(";")||word.equals("-")||word.equals(":")||word.equals("(")||word.equals(")")||word.equals("\"")||word.equals("\'")){
+//            return new Word(word, WordIF.WordClassification.INTERMEDIATE_PONTUATION);
+////            wrd.setWordClassification(WordIF.WordClassification.INTERMEDIATE_PONTUATION);
+//            //dao.save(wrd);//salva no banco
+//        }
 
         Word wrd = (Word) dao.getWord(word);
         if(wrd==null){

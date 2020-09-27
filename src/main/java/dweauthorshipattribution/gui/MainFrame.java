@@ -1,9 +1,17 @@
 package dweauthorshipattribution.gui;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +24,9 @@ import dweauthorshipattribution.interfaces.AuthorshipAllocatorIF;
 import dweauthorshipattribution.interfaces.AuthorshipAllocatorResultIF;
 import dweauthorshipattribution.interfaces.DoTrainingIF;
 import dweauthorshipattribution.interfaces.WordClassifierIF;
+import dweauthorshipattribution.interfaces.WordIF;
 import dweauthorshipattribution.lexicon.WordClassifier;
+import dweauthorshipattribution.persistence.dao.WordDAO;
 import dweauthorshipattribution.util.FileUtils;
 
 /**
@@ -46,6 +56,8 @@ public class MainFrame extends javax.swing.JFrame {
     private String filesTrainingExtension;
     private WordClassifierIF wordClassifier;
     private DialogTrainingAuthor dialogTrainingAuthor;
+    public static final String[] PONCTUATION = {".", "!", "?", ";", ",", ":", "(", ")", "`", "~", "@", "#", "$", "%", "^", "&", "*", "\\", "/",
+            "[", "]", "{", "}", "<", ">", "|", "-", "=", "+", "\"", "'"};
 
     /**
      * Construtor da classe.
@@ -416,11 +428,121 @@ public class MainFrame extends javax.swing.JFrame {
 
         t.start();
     }//GEN-LAST:event_jButtonExecuteActionPerformed
-
+    private WordDAO dao = new WordDAO();
     private void getFileClaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getFileClaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_getFileClaActionPerformed
+    	if(selectedTextFile == null){
+            JOptionPane.showMessageDialog(this, "Select a text file!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }        	
 
+		if (selectedTextFile == null) {
+			JOptionPane.showMessageDialog(this, "Select a text file!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		Thread t = new Thread() {
+
+			public void run() {
+				new Thread() {
+					public void run() {
+						dialogComicSplash.setVisible(true);
+					}
+				}.start();
+				
+				Matcher m = Pattern.compile("\\w+\\.txt\\Z").matcher(selectedTextFile.getPath());
+				String nomeDoArquivo = "";
+				while (m.find()) {
+					nomeDoArquivo = m.group();
+				}
+
+				List<String> palavras = new ArrayList<>();
+
+				try {
+					String texto = selectedTextFile.getContent();
+			        
+			        for (String ponctuation : PONCTUATION) 
+			            texto = texto.replace(ponctuation, String.format(" %s ", ponctuation));
+					
+					Matcher m2 = Pattern.compile("[^0-9 ]+").matcher(texto);
+					while (m2.find()) {
+						palavras.add(m2.group());
+					}
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				List<WordIF> words = new ArrayList<>();
+
+				for (String string : palavras) {
+					WordIF word = wordClassifier.classificate(string);
+					words.add(word);
+				}
+
+				String path = System.getProperty("user.dir") + "\\Arquivos só com as classificações gramaticáis\\Classific"
+						+ nomeDoArquivo;
+				System.out.println(path);
+
+				File f = new File(path);
+				if (!f.exists()) {
+					if (f.getParentFile() != null) {
+						if (!f.getParentFile().exists()) { // pega tudo que tem antes do arquivo
+							f.getParentFile().mkdirs();
+						}
+					}
+					try {
+						f.createNewFile();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+				try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+					for (WordIF wordIF : words) {
+						bw.write(wordIF.getWord() + " (" + wordIF.getWordClassification() + ")");
+						bw.newLine();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				dialogComicSplash.setVisible(false);
+				System.out.println("%nDeu certo");
+			}
+		};
+		t.start();
+    	//adicionarPontosAoBanco();
+    	
+    }//GEN-LAST:event_getFileClaActionPerformed
+    
+    
+    public void adicionarPontosAoBanco() {
+    	
+    	System.out.println(dao.getWord("."));
+    	System.out.println(dao.getWord(","));
+    	System.out.println(dao.getWord("!"));
+    	System.out.println(dao.getWord("?"));
+    	System.out.println(dao.getWord("..."));
+    	System.out.println(dao.getWord("*"));
+    	System.out.println(dao.getWord("("));
+    	System.out.println(dao.getWord(")"));
+    	System.out.println(dao.getWord("{"));
+    	System.out.println(dao.getWord("}"));
+    	System.out.println(dao.getWord("["));
+    	System.out.println(dao.getWord("]"));
+    	System.out.println(dao.getWord("ª"));
+    	System.out.println(dao.getWord("º"));
+    	System.out.println(dao.getWord(";"));
+    	System.out.println(dao.getWord(":"));
+    	System.out.println(dao.getWord("'"));
+    	System.out.println(dao.getWord("\""));
+    	
+    	
+    	
+    }
+    
+    
+    
     public void setResult(AuthorshipAllocatorResultIF result){
         Arrays.sort(result.getTestedAuthors(), AuthorCompressFileLenghIF.COMPARATOR);
 
