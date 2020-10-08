@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import Compressores.TextFile;
 import Compressores.TimeUtils;
+import PPM.modules.AbstractPPMModule;
 import dweauthorshipattribution.interfaces.DoTrainingIF;
 import dweauthorshipattribution.interfaces.WordClassifierIF;
 import dweauthorshipattribution.lexicon.WordClassifier;
@@ -61,88 +62,117 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
-	// Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-		jScrollBar1 = new javax.swing.JScrollBar();
-		jButtonSelectFile = new javax.swing.JButton();
-		jButtonTraining = new javax.swing.JButton();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		ListaArquivosTreinamento = new javax.swing.JList<>();
-		remove = new javax.swing.JButton();
-		jLabel1 = new javax.swing.JLabel();
+        jScrollBar1 = new javax.swing.JScrollBar();
+        jButtonSelectFile = new javax.swing.JButton();
+        jButtonTraining = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ListaArquivosTreinamento = new javax.swing.JList<>();
+        remove = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Context = new javax.swing.JComboBox<>();
 
-		setTitle("Ttraining author");
+        setTitle("Ttraining author");
 
-		jButtonSelectFile.setText("Add files");
-		jButtonSelectFile.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButtonSelectFileActionPerformed(evt);
-			}
-		});
+        jButtonSelectFile.setText("Add files");
+        jButtonSelectFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelectFileActionPerformed(evt);
+            }
+        });
 
-		jButtonTraining.setText("Training");
-		jButtonTraining.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButtonTrainingActionPerformed(evt);
-			}
-		});
+        jButtonTraining.setText("Training");
+        jButtonTraining.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTrainingActionPerformed(evt);
+            }
+        });
 
-		ListaArquivosTreinamento.setModel(new javax.swing.AbstractListModel<String>() {
-			String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+        ListaArquivosTreinamento.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(ListaArquivosTreinamento);
 
-			public int getSize() {
-				return strings.length;
-			}
+        remove.setText("Remove file");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
 
-			public String getElementAt(int i) {
-				return strings[i];
-			}
-		});
-		jScrollPane1.setViewportView(ListaArquivosTreinamento);
+        jLabel1.setText("Select a file to remove");
 
-		remove.setText("Remove file");
-		remove.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				removeActionPerformed(evt);
-			}
-		});
+        Context.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Context.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContextActionPerformed(evt);
+            }
+        });
 
-		jLabel1.setText("Select a file to remove");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(remove)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(210, 210, 210)
+                                .addComponent(Context, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonTraining, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jButtonSelectFile)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jButtonSelectFile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remove)
+                    .addComponent(jButtonTraining, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Context, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6))
+        );
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup()
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-										layout.createSequentialGroup().addComponent(remove)
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-														javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(jButtonTraining, javax.swing.GroupLayout.PREFERRED_SIZE,
-														94, javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addComponent(jScrollPane1)))
-						.addGroup(layout.createSequentialGroup().addGap(224, 224, 224).addComponent(jButtonSelectFile)
-								.addGap(0, 214, Short.MAX_VALUE)))
-				.addContainerGap())
-				.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jLabel1)
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addGap(7, 7, 7).addComponent(jButtonSelectFile)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166,
-						javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel1)
-				.addGap(1, 1, 1)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(remove)
-						.addComponent(jButtonTraining, javax.swing.GroupLayout.PREFERRED_SIZE, 34,
-								javax.swing.GroupLayout.PREFERRED_SIZE))
-				.addGap(6, 6, 6)));
+        pack();
+        
+        Context.removeAllItems();
+    	Context.setSelectedItem(null);
+    	Context.addItem("");
+        Context.addItem("1");
+        Context.addItem("2");
+        Context.addItem("3");
+        Context.addItem("4");
+        Context.addItem("5");
+    }// </editor-fold>//GEN-END:initComponents
 
-		pack();
-	}// </editor-fold>//GEN-END:initComponents
+    private void ContextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContextActionPerformed
+    	
+    }//GEN-LAST:event_ContextActionPerformed
 
 	private void jButtonSelectFileActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonSelectFileActionPerformed
 		// TODO add your handling code here:
@@ -169,12 +199,39 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
 			}
 		}
 	}// GEN-LAST:event_jButtonSelectFileActionPerformed
-
+        
+        private void changeContext(String value) throws Exception{
+            int K = 0;
+            switch (value){
+                case "1":
+                    K = 1;
+                    break;
+                case "2":
+                    K = 2;
+                    break;
+                case "3":
+                    K = 3;
+                    break;
+                case "4":
+                    K = 4;
+                    break;
+                case "5":
+                    K = 5;
+                    break;
+                default:
+                    throw new Exception("Error");
+            }
+            
+            AbstractPPMModule.DEFAULT_NUMBER_OF_CONTEXTS = K;
+        }
+        
+        
 	private void jButtonTrainingActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonTrainingActionPerformed
 		// TODO add your handling code here:
-		if (selectedTextFilesAT != null && selectedTextFilesAT.size() > 0) {
-			String createdTextFileName[] = new String[selectedTextFilesAT.size()];
-
+                try {
+		if (selectedTextFilesAT != null && selectedTextFilesAT.size() > 0 && !Context.getSelectedItem().toString().equals("")) {
+                        changeContext(Context.getSelectedItem().toString());
+                        String createdTextFileName[] = new String[selectedTextFilesAT.size()];
 			for (int i = 0; i < selectedTextFilesAT.size(); i++) {
 				createdTextFileName[i] = selectedTextFilesAT.get(i).getName().trim().replace(" ", "_");
 			}
@@ -244,7 +301,11 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
 
 			t.start();
 		} else
-			JOptionPane.showMessageDialog(this, "Select a text file!", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Check the fields and try again", "Error", JOptionPane.ERROR_MESSAGE);
+                
+                } catch(Exception e){
+                     e.printStackTrace();
+                }
 	}// GEN-LAST:event_jButtonTrainingActionPerformed
 
 	private void removeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_removeActionPerformed
@@ -297,14 +358,15 @@ public class DialogTrainingAuthor extends javax.swing.JDialog {
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JList<String> ListaArquivosTreinamento;
-	private javax.swing.JButton jButtonSelectFile;
-	private javax.swing.JButton jButtonTraining;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JScrollBar jScrollBar1;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JButton remove;
-	// End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Context;
+    private javax.swing.JList<String> ListaArquivosTreinamento;
+    private javax.swing.JButton jButtonSelectFile;
+    private javax.swing.JButton jButtonTraining;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton remove;
+    // End of variables declaration//GEN-END:variables
 
 }
