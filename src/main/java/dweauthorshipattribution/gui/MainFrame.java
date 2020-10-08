@@ -380,6 +380,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItemNewAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNewAuthorActionPerformed
         // TODO add your handling code here:
         dialogTrainingAuthor.setVisible(true);
+        System.out.println("AEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
     }//GEN-LAST:event_jMenuItemNewAuthorActionPerformed
 
     private void jButtonExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecuteActionPerformed
