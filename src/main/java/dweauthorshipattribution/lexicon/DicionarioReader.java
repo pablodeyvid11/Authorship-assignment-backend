@@ -41,8 +41,7 @@ public DicionarioReader(String url) {
 			URI uri = new URI(url + word);
 			HttpGet get = new HttpGet(uri);
 			HttpClient httpclient = new DefaultHttpClient();
-//			LOGGER.customInfo("Consultando '%s'. Palavra pesquisada: %s", url, word);
-                        System.out.printf("##Consultando '%s'. Palavra pesquisada: %s", url, word);
+			System.out.printf("##Consultando '%s'. Palavra pesquisada: %s", url, word);
 			HttpEntity response = httpclient.execute(get).getEntity();
 			if (response != null) {
 				result = EntityUtils.toString(response);
