@@ -17,7 +17,7 @@ import java.net.URI;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 //import br.ufpb.compiladores.projetofinal.util.logger.ILogger;
@@ -40,7 +40,7 @@ public DicionarioReader(String url) {
 			url = "http://www.priberam.pt/dlpo/default.aspx?pal=";
 			URI uri = new URI(url + word);
 			HttpGet get = new HttpGet(uri);
-			HttpClient httpclient = new DefaultHttpClient();
+			HttpClient httpclient = HttpClients.createDefault();
 			System.out.printf("##Consultando '%s'. Palavra pesquisada: %s", url, word);
 			HttpEntity response = httpclient.execute(get).getEntity();
 			if (response != null) {
