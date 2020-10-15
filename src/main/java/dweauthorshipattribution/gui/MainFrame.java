@@ -503,7 +503,6 @@ public class MainFrame extends javax.swing.JFrame {
 						/*** Executa a atribuicao de autoria ***/
 						AuthorshipAllocatorResultIF result = authorshipAllocator.execute(map.get(aIF));
 						escreverResultado(result, f2, map.get(aIF), aIF);
-
 					} catch (Exception ex) {
 						ex.printStackTrace();
 						escreverResultado(null, f2, map.get(aIF), aIF);
