@@ -476,8 +476,8 @@ public class MainFrame extends javax.swing.JFrame {
 		Map<AuthorIF, TextFile> map = new HashMap<>();
 
 		for (AuthorIF aIF : dialogLoadedAuthors.getAuthors()) {
-			for(TextFile tF : arquivosTesteCarregados) {
-				if(aIF.getAuthorName().substring(0, 5).equals(tF.getName().substring(0, 5))) {
+			for (TextFile tF : arquivosTesteCarregados) {
+				if (aIF.getAuthorName().substring(0, 5).equals(tF.getName().substring(0, 5))) {
 					map.put(aIF, tF);
 					break;
 				}
@@ -486,11 +486,11 @@ public class MainFrame extends javax.swing.JFrame {
 
 		final MainFrame mainFrame = this;
 
-		for (AuthorIF aIF : map.keySet()) {
+		Thread t = new Thread() {
 
-			Thread t = new Thread() {
-
-				public void run() {
+			public void run() {
+				for (AuthorIF aIF : map.keySet()) {
+					System.out.println(aIF.getAuthorName() + ": " + map.get(aIF).getName());
 					new Thread() {
 						public void run() {
 							dialogComicSplash.setVisible(true);
@@ -510,12 +510,10 @@ public class MainFrame extends javax.swing.JFrame {
 
 					dialogComicSplash.setVisible(false);
 				}
-			};
+			}
 
-			t.start();
-
-		}
-
+		};
+		t.start();
 	}// GEN-LAST:event_executeTestButtonActionPerformed
 
 	protected void escreverResultado(AuthorshipAllocatorResultIF result, File f2, TextFile atc, AuthorIF aIF) {
@@ -525,7 +523,8 @@ public class MainFrame extends javax.swing.JFrame {
 				bw.newLine();
 				bw.write("Possible Author: " + result.getPossibleAuthor().getAuthor().getAuthorName());
 				bw.newLine();
-				Boolean isCorrect = (result.getPossibleAuthor().getAuthor().getAuthorName().substring(0, 5).equals(aIF.getAuthorName().substring(0,  5)));
+				Boolean isCorrect = (result.getPossibleAuthor().getAuthor().getAuthorName().substring(0, 5)
+						.equals(aIF.getAuthorName().substring(0, 5)));
 				bw.write("Result: " + (isCorrect ? "CORRECT" : "ERROR"));
 				bw.newLine();
 				bw.write("-");
@@ -533,7 +532,7 @@ public class MainFrame extends javax.swing.JFrame {
 				int cont = 1;
 				for (AuthorCompressFileLenghIF author : result.getTestedAuthors()) {
 					bw.write(cont + "º: Author's name: " + author.getAuthor() + "; File length: "
-							+ String.format("%.4f", author.getFileLenght()));
+							+ author.getFileLenght());
 					bw.newLine();
 				}
 				bw.write("---------------------------------------------");
