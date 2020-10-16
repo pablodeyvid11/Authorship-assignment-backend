@@ -1,9 +1,9 @@
 package dweauthorshipattribution.gui;
 
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -501,8 +501,8 @@ public class MainFrame extends javax.swing.JFrame {
 
 					try {
 						/*** Executa a atribuicao de autoria ***/
-						AuthorshipAllocatorResultIF result = authorshipAllocator.execute(map.get(aIF));
-						escreverResultado(result, f2, map.get(aIF), aIF);
+						//AuthorshipAllocatorResultIF result = authorshipAllocator.execute(map.get(aIF));
+						escreverResultado(null, f2, map.get(aIF), aIF);
 					} catch (Exception ex) {
 						ex.printStackTrace();
 						escreverResultado(null, f2, map.get(aIF), aIF);
@@ -517,42 +517,48 @@ public class MainFrame extends javax.swing.JFrame {
 	}// GEN-LAST:event_executeTestButtonActionPerformed
 
 	protected void escreverResultado(AuthorshipAllocatorResultIF result, File f2, TextFile atc, AuthorIF aIF) {
-		if (result != null) {
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(f2))) {
-				bw.write("---------------------------------------------");
-				bw.newLine();
-				bw.write("Possible Author: " + result.getPossibleAuthor().getAuthor().getAuthorName());
-				bw.newLine();
-				Boolean isCorrect = (result.getPossibleAuthor().getAuthor().getAuthorName().substring(0, 5)
-						.equals(aIF.getAuthorName().substring(0, 5)));
-				bw.write("Result: " + (isCorrect ? "CORRECT" : "ERROR"));
-				bw.newLine();
-				bw.write("-");
-				bw.newLine();
-				int cont = 1;
-				for (AuthorCompressFileLenghIF author : result.getTestedAuthors()) {
-					bw.write(cont + "º: Author's name: " + author.getAuthor() + "; File length: "
-							+ author.getFileLenght());
-					bw.newLine();
-				}
-				bw.write("---------------------------------------------");
-				bw.newLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(f2))) {
-				bw.write("---------------------------------------------");
-				bw.newLine();
-				bw.write("ERROR");
-				bw.newLine();
-				bw.write("---------------------------------------------");
-				bw.newLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+//		if (result != null) {
+//			try (BufferedWriter bw = new BufferedWriter(new FileWriter(f2))) {
+//				bw.write("---------------------------------------------");
+//				bw.newLine();
+//				bw.write("Possible Author: " + result.getPossibleAuthor().getAuthor().getAuthorName());
+//				bw.newLine();
+//				Boolean isCorrect = (result.getPossibleAuthor().getAuthor().getAuthorName().substring(0, 5)
+//						.equals(aIF.getAuthorName().substring(0, 5)));
+//				bw.write("Result: " + (isCorrect ? "CORRECT" : "ERROR"));
+//				bw.newLine();
+//				bw.write("-");
+//				bw.newLine();
+//				int cont = 1;
+//				for (AuthorCompressFileLenghIF author : result.getTestedAuthors()) {
+//					bw.write(cont + "º: Author's name: " + author.getAuthor() + "; File length: "
+//							+ author.getFileLenght());
+//					bw.newLine();
+//				}
+//				bw.write("---------------------------------------------");
+//				bw.newLine();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		} else {
+//			try (BufferedWriter bw = new BufferedWriter(new FileWriter(f2))) {
+//				bw.write("---------------------------------------------");
+//				bw.newLine();
+//				bw.write("ERROR");
+//				bw.newLine();
+//				bw.write("---------------------------------------------");
+//				bw.newLine();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+		System.out.println(f2.getAbsolutePath());
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f2.getAbsolutePath()))) {
+			bw.write(atc.getName() + "-" + aIF.getAuthorName()) ;
+			bw.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
 	}
 
 	private void jMenuItemAuthorsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemAuthorsActionPerformed
