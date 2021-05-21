@@ -1,9 +1,9 @@
 package dweauthorshipattribution.gui;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +18,12 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -501,7 +507,8 @@ public class MainFrame extends javax.swing.JFrame {
 
 					try {
 						/*** Executa a atribuicao de autoria ***/
-						//AuthorshipAllocatorResultIF result = authorshipAllocator.execute(map.get(aIF));
+						// AuthorshipAllocatorResultIF result =
+						// authorshipAllocator.execute(map.get(aIF));
 						escreverResultado(null, f2, map.get(aIF), aIF);
 					} catch (Exception ex) {
 						ex.printStackTrace();
@@ -554,7 +561,7 @@ public class MainFrame extends javax.swing.JFrame {
 //		}
 		System.out.println(f2.getAbsolutePath());
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f2.getAbsolutePath()))) {
-			bw.write(atc.getName() + "-" + aIF.getAuthorName()) ;
+			bw.write(atc.getName() + "-" + aIF.getAuthorName());
 			bw.newLine();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -665,6 +672,9 @@ public class MainFrame extends javax.swing.JFrame {
 				}
 
 				dialogComicSplash.setVisible(false);
+				somDeAviso();
+				somDeAviso();
+				somDeAviso();
 			}
 		};
 
@@ -673,8 +683,29 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private WordDAO dao = new WordDAO();
 
+	public void somDeAviso() {
+		try {
+			File soundFile = new File("C:\\Users\\Pablo Paiva\\Desktop\\toque.wav");
+			AudioInputStream sound = AudioSystem.getAudioInputStream(soundFile);
+			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+			Clip clip = (Clip) AudioSystem.getLine(info);
+			clip.open(sound);
+			clip.start();
+		} catch (Exception e) {
+
+		}
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private void getFileClaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_getFileClaActionPerformed
 		if (selectedTextFile == null) {
+
+			somDeAviso();
 			JOptionPane.showMessageDialog(this, "Select a text file!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -868,11 +899,11 @@ public class MainFrame extends javax.swing.JFrame {
 
 		AuthorCompressFileLenghIF[] authorsResult = result.getTestedAuthors();
 
-		for (AuthorCompressFileLenghIF authorCompressFileLenghIF : authorsResult) {
+		for (int i = 0; i < authorsResult.length; i++) {
 			Vector<String> v = new Vector<String>();
 
-			v.add(authorCompressFileLenghIF.getAuthor().getAuthorName());
-			v.add(authorCompressFileLenghIF.getFileLenght() + "");
+			v.add(((i + 1) + "º - ") + authorsResult[i].getAuthor().getAuthorName());
+			v.add(authorsResult[i].getFileLenght() + "");
 
 			defaultTableModel.addRow(v);
 		}
